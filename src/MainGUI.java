@@ -196,10 +196,6 @@ public class MainGUI extends JFrame {
         phoneLabel = new JLabel(); // Placeholder for phone
         panel.add(phoneLabel);
 
-        panel.add(new JLabel("Address:"));
-        addressLabel = new JLabel(); // Placeholder for address
-        panel.add(addressLabel);
-
         // Fetch and display profile data from the database
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT name, email, phone, address FROM users WHERE email = ?")) {
@@ -209,7 +205,6 @@ public class MainGUI extends JFrame {
                 nameLabel.setText(resultSet.getString("name"));
                 emailLabel.setText(resultSet.getString("email"));
                 phoneLabel.setText(resultSet.getString("phone"));
-                addressLabel.setText(resultSet.getString("address"));
             }
         } catch (Exception e) {
             e.printStackTrace();
